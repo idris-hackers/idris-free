@@ -27,6 +27,10 @@ lowerFree : Monad f => Free f a -> f a
 lowerFree (Pure x) = return x
 lowerFree (Bind f) = assert_total (flatten (map lowerFree f))
 
+iterM : (Monad m, Functor f) => (f (m a) -> m a) -> Free f a -> m a
+iterM f (Pure x) = return x
+iterM f (Bind x) = assert_total (f (map (iterM f) x))
+
 class MonadFree (m : Type -> Type) (f : Type -> Type) | m where
   wrap : f (m a) -> m a
 
