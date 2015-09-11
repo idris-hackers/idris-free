@@ -1,0 +1,4 @@
+package idris_free
+
+modules = Control.Monad.Free
+        , Control.Monad.Codensity
