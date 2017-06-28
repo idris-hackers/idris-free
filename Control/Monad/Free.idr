@@ -37,6 +37,16 @@ iterM f m = assert_total $ case m of
   Pure x => pure x
   Bind x => f (map (iterM f) x)
 
+hoistFree : Functor g => ({ a : Type } -> f a -> g a) -> Free f b -> Free g b
+hoistFree f m = assert_total $ case m of
+  Pure x => Pure x
+  Bind x => Bind (hoistFree f <$> f x)
+
+foldFree : (Monad m, Functor f) => ({ a : Type } -> f a -> m a) -> Free f b -> m b
+foldFree f m = assert_total $ case m of
+  Pure x => pure x
+  Bind x => f x >>= foldFree f
+
 interface MonadFree (m : Type -> Type) (f : Type -> Type) | m where
   wrap : f (m a) -> m a
 
