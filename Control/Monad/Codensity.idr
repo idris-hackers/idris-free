@@ -2,6 +2,7 @@ module Control.Monad.Codensity
 
 import Control.Monad.Free
 
+%access public export
 %default total
 
 data Codensity : (m : Type -> Type) -> (a : Type) -> Type where

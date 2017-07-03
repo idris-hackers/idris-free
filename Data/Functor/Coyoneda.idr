@@ -1,5 +1,7 @@
 module Data.Functor.Coyoenda
 
+%access public export
+
 data Coyoneda : (f : Type -> Type) -> (a : Type) -> Type where
   Coyo : {b : Type} -> (b -> a) -> f b -> Coyoneda f a
 
