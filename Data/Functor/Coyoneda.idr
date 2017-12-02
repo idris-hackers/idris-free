@@ -1,4 +1,4 @@
-module Data.Functor.Coyoenda
+module Data.Functor.Coyoneda
 
 %access public export
 
