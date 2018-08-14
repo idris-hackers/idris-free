@@ -1,0 +1,14 @@
+[package]
+name = "idris-hackers/free"
+version = "0.1.0"
+authors = ["raichoo"]
+description = "Free monads for Idris"
+license = "BSD3"
+
+[targets.lib]
+path = "."
+mods = [ "Control.Monad.Free"
+       , "Control.Monad.Codensity"
+       , "Data.Functor.Coyoneda"
+       ]
+idris_opts = ["--warnreach"]
